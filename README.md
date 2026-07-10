@@ -34,23 +34,6 @@ This project demonstrates a **complete MLOps pipeline** for machine learning mod
 
 ---
 
-## 🏗️ Architecture
-
-┌─────────────────────────────────────────────────────────────────┐
-│ ML PIPELINE ARCHITECTURE │
-├─────────────────────────────────────────────────────────────────┤
-│ │
-│ Raw Data ──► Preprocess ──► Train ──► Evaluate ──► Deploy │
-│ │ │ │ │ │ │
-│ ▼ ▼ ▼ ▼ ▼ │
-│ DVC Scaler MLflow Reports FastAPI │
-│ Versioning Saved Tracking Saved API │
-│ │
-└─────────────────────────────────────────────────────────────────┘
-
-
----
-
 ## 🛠️ Tech Stack
 
 ### Core Technologies
@@ -75,56 +58,6 @@ This project demonstrates a **complete MLOps pipeline** for machine learning mod
 | Docker | Containerization |
 | GitHub Actions | CI/CD automation |
 | Pytest | Unit testing |
-
----
-
-## 📁 Project Structure
-ml-pipeline-dvc-mlflow/
-│
-├── data/
-│ ├── raw/ # Raw dataset (versioned with DVC)
-│ │ └── wine.csv
-│ ├── processed/ # Preprocessed data
-│ └── external/ # External data sources
-│
-├── src/
-│ ├── init.py
-│ ├── data_loader.py # Load and save raw data
-│ ├── preprocess.py # Feature scaling
-│ ├── train.py # Model training with MLflow
-│ ├── evaluate.py # Model evaluation
-│ └── predict.py # Prediction functions
-│
-├── api/
-│ ├── init.py
-│ └── main.py # FastAPI application
-│
-├── models/
-│ ├── model.pkl # Trained model
-│ └── scaler.pkl # Fitted scaler
-│
-├── reports/
-│ ├── metrics.json # Model metrics
-│ ├── classification_report.csv
-│ └── confusion_matrix.png
-│
-├── mlruns/ # MLflow experiment data
-├── .dvc/ # DVC cache
-├── .github/
-│ └── workflows/
-│ └── ci.yml # GitHub Actions CI/CD
-│
-├── tests/
-│ ├── test_api.py
-│ └── test_model.py
-│
-├── dvc.yaml # DVC pipeline definition
-├── Dockerfile # Docker configuration
-├── requirements.txt
-├── .env.example
-├── .gitignore
-├── LICENSE
-└── README.md
 
 
 ---
