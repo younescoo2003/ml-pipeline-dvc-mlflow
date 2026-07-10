@@ -1,0 +1,35 @@
+stages:
+  load_data:
+    cmd: python src/data_loader.py
+    deps:
+      - src/data_loader.py
+    outs:
+      - data/raw/wine.csv
+  
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+      - src/preprocess.py
+      - data/raw/wine.csv
+    outs:
+      - models/scaler.pkl
+  
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/raw/wine.csv
+      - models/scaler.pkl
+    outs:
+      - models/model.pkl
+    metrics:
+      - reports/metrics.json
+  
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - models/model.pkl
+    outs:
+      - reports/classification_report.csv
+      - reports/confusion_matrix.png
